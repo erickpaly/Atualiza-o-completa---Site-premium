@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -18,6 +18,7 @@
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             color: #fff;
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
         /* Header Premium */
@@ -68,105 +69,12 @@
             border-radius: 25px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.2);
+            cursor: pointer;
         }
 
         .location-info i {
             color: #fff;
             margin-right: 8px;
-        }
-
-        /* IA Assistant */
-        .ai-assistant {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1001;
-        }
-
-        .ai-button {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-        }
-
-        .ai-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.6);
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4); }
-            50% { box-shadow: 0 8px 25px rgba(102, 126, 234, 0.8); }
-            100% { box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4); }
-        }
-
-        .ai-chat {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 350px;
-            height: 500px;
-            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.1);
-            display: none;
-            overflow: hidden;
-        }
-
-        .ai-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .ai-messages {
-            height: 350px;
-            overflow-y: auto;
-            padding: 20px;
-        }
-
-        .ai-message {
-            margin-bottom: 15px;
-            padding: 12px 16px;
-            border-radius: 18px;
-            max-width: 80%;
-            animation: slideIn 0.3s ease;
-        }
-
-        .ai-message.user {
-            background: linear-gradient(135deg, #ff6b35 0%, #ff8e53 100%);
-            margin-left: auto;
-        }
-
-        .ai-message.bot {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .ai-input-container {
-            padding: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .ai-input {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 25px;
-            background: rgba(255,255,255,0.1);
-            color: white;
-            outline: none;
         }
 
         /* Navigation */
@@ -175,6 +83,9 @@
             backdrop-filter: blur(10px);
             padding: 20px 0;
             border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: sticky;
+            top: 80px;
+            z-index: 999;
         }
 
         .nav-tabs {
@@ -198,6 +109,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            user-select: none;
         }
 
         .nav-tab:hover, .nav-tab.active {
@@ -211,7 +123,7 @@
         .menu-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 40px 20px 100px;
         }
 
         .menu-section {
@@ -275,6 +187,7 @@
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: bold;
+            z-index: 2;
         }
 
         .product-info {
@@ -316,12 +229,17 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
+            user-select: none;
         }
 
         .add-to-cart:hover {
             background: linear-gradient(135deg, #e55a2b 0%, #e67e49 100%);
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        .add-to-cart:active {
+            transform: translateY(0);
         }
 
         /* Cart */
@@ -340,6 +258,7 @@
             box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
             transition: all 0.3s ease;
             z-index: 1000;
+            user-select: none;
         }
 
         .cart-button:hover {
@@ -361,6 +280,7 @@
             justify-content: center;
             font-size: 0.8rem;
             font-weight: bold;
+            min-width: 25px;
         }
 
         /* Modal Premium */
@@ -376,6 +296,11 @@
             align-items: center;
             justify-content: center;
             z-index: 1002;
+            padding: 20px;
+        }
+
+        .modal.show {
+            display: flex;
         }
 
         .modal-content {
@@ -383,11 +308,12 @@
             border-radius: 20px;
             padding: 30px;
             max-width: 600px;
-            width: 90%;
+            width: 100%;
             max-height: 90vh;
             overflow-y: auto;
             border: 1px solid rgba(255,255,255,0.1);
             box-shadow: 0 25px 80px rgba(0,0,0,0.5);
+            position: relative;
         }
 
         .modal-header {
@@ -453,6 +379,10 @@
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
         }
 
         .qty-btn:hover {
@@ -492,7 +422,7 @@
             color: #ff6b35;
         }
 
-        /* PIX Interface Premium */
+        /* PIX Interface */
         .pix-container {
             background: linear-gradient(135deg, #00c851 0%, #00a841 100%);
             padding: 25px;
@@ -500,10 +430,11 @@
             margin: 20px 0;
             text-align: center;
             border: 1px solid rgba(255,255,255,0.2);
+            display: none;
         }
 
-        .pix-info {
-            margin: 15px 0;
+        .pix-container.show {
+            display: block;
         }
 
         .pix-key {
@@ -532,6 +463,11 @@
         /* Money Payment */
         .money-container {
             margin: 20px 0;
+            display: none;
+        }
+
+        .money-container.show {
+            display: block;
         }
 
         .money-input {
@@ -547,13 +483,13 @@
         }
 
         .money-buttons {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 10px;
             margin: 15px 0;
         }
 
         .money-btn {
-            flex: 1;
             padding: 12px;
             background: rgba(255, 107, 53, 0.2);
             border: 1px solid #ff6b35;
@@ -575,9 +511,14 @@
             margin: 15px 0;
             text-align: center;
             border: 1px solid rgba(255,255,255,0.2);
+            display: none;
         }
 
-        /* Location Confirmation */
+        .change-info.show {
+            display: block;
+        }
+
+        /* Location Section */
         .location-section {
             margin: 25px 0;
             padding: 20px;
@@ -602,12 +543,137 @@
             background: linear-gradient(135deg, #0056b3 0%, #004494 100%);
         }
 
+        .confirm-location.confirmed {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        }
+
+        /* AI Assistant */
+        .ai-assistant {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1001;
+        }
+
+        .ai-button {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .ai-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.6);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4); }
+            50% { box-shadow: 0 8px 25px rgba(102, 126, 234, 0.8); }
+            100% { box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4); }
+        }
+
+        .ai-chat {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            height: 500px;
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+            display: none;
+            overflow: hidden;
+        }
+
+        .ai-chat.show {
+            display: block;
+        }
+
+        .ai-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ai-messages {
+            height: 350px;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .ai-message {
+            margin-bottom: 15px;
+            padding: 12px 16px;
+            border-radius: 18px;
+            max-width: 80%;
+            animation: slideIn 0.3s ease;
+        }
+
+        .ai-message.user {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8e53 100%);
+            margin-left: auto;
+        }
+
+        .ai-message.bot {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .ai-input-container {
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .ai-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 25px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            outline: none;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+            z-index: 1003;
+            transform: translateX(400px);
+            transition: all 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
                 gap: 15px;
                 text-align: center;
+            }
+
+            .logo-text h1 {
+                font-size: 1.5rem;
             }
 
             .nav-tabs {
@@ -645,6 +711,11 @@
             .modal-content {
                 width: 95%;
                 padding: 20px;
+                margin: 10px;
+            }
+
+            .money-buttons {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -659,27 +730,67 @@
             }
         }
 
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 10px;
-            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
-            z-index: 1003;
-            transform: translateX(400px);
-            transition: all 0.3s ease;
+        /* Empty cart message */
+        .empty-cart {
+            text-align: center;
+            padding: 40px 20px;
+            color: #ccc;
         }
 
-        .notification.show {
-            transform: translateX(0);
+        .empty-cart i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        /* Order summary */
+        .order-summary {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .finalize-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .finalize-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: #666;
+        }
+
+        .finalize-btn:not(:disabled):hover {
+            background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
         }
     </style>
 </head>
 <body>
-    <!-- Header Premium -->
+    <!-- Header -->
     <div class="header">
         <div class="header-content">
             <div class="logo">
@@ -689,9 +800,9 @@
                     <p>Sabor que une famílias</p>
                 </div>
             </div>
-            <div class="location-info">
+            <div class="location-info" onclick="detectLocation()">
                 <i class="fas fa-map-marker-alt"></i>
-                <span id="locationText">📍 Carregando localização...</span>
+                <span id="locationText">📍 Clique para detectar localização</span>
             </div>
         </div>
     </div>
@@ -699,23 +810,23 @@
     <!-- Navigation -->
     <div class="nav-container">
         <div class="nav-tabs">
-            <div class="nav-tab active" onclick="showCategory('carnes')">
+            <div class="nav-tab active" data-category="carnes">
                 <i class="fas fa-drumstick-bite"></i>
                 Carnes
             </div>
-            <div class="nav-tab" onclick="showCategory('burgers')">
+            <div class="nav-tab" data-category="burgers">
                 <i class="fas fa-hamburger"></i>
                 Hamburgers
             </div>
-            <div class="nav-tab" onclick="showCategory('pizzas')">
+            <div class="nav-tab" data-category="pizzas">
                 <i class="fas fa-pizza-slice"></i>
                 Pizzas
             </div>
-            <div class="nav-tab" onclick="showCategory('bebidas')">
+            <div class="nav-tab" data-category="bebidas">
                 <i class="fas fa-glass-cheers"></i>
                 Bebidas
             </div>
-            <div class="nav-tab" onclick="showCategory('sobremesas')">
+            <div class="nav-tab" data-category="sobremesas">
                 <i class="fas fa-ice-cream"></i>
                 Sobremesas
             </div>
@@ -728,14 +839,15 @@
         <div id="carnes" class="menu-section active">
             <div class="menu-grid">
                 <div class="product-card">
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?w=400&h=300&fit=crop')">
+                    <div class="product-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1683619761492-639240d29bb5?w=400&h=300&fit=crop&crop=center')">
+                        🥩
                         <div class="product-badge">🔥 Popular</div>
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Picanha Premium</h3>
                         <p class="product-description">Picanha premium grelhada no ponto, acompanha vinagrete, farofa e pão de alho</p>
                         <div class="product-price">R$ 45,00</div>
-                        <button class="add-to-cart" onclick="addToCart('Picanha Premium', 45.00)">
+                        <button class="add-to-cart" data-name="Picanha Premium" data-price="45.00">
                             <i class="fas fa-plus"></i>
                             Adicionar ao Carrinho
                         </button>
@@ -743,14 +855,15 @@
                 </div>
 
                 <div class="product-card">
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1558030006-450675393462?w=400&h=300&fit=crop')">
+                    <div class="product-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1664478266106-0a3b0366e5e6?w=400&h=300&fit=crop&crop=center')">
+                        🍖
                         <div class="product-badge">🥩 Especial</div>
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Costela BBQ</h3>
                         <p class="product-description">Costela suína defumada por 12h com molho barbecue especial da casa</p>
                         <div class="product-price">R$ 38,00</div>
-                        <button class="add-to-cart" onclick="addToCart('Costela BBQ', 38.00)">
+                        <button class="add-to-cart" data-name="Costela BBQ" data-price="38.00">
                             <i class="fas fa-plus"></i>
                             Adicionar ao Carrinho
                         </button>
@@ -758,13 +871,14 @@
                 </div>
 
                 <div class="product-card">
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=400&h=300&fit=crop')">
+                    <div class="product-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1664472657219-0c7bce100b5e?w=400&h=300&fit=crop&crop=center')">
+                        🐔
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Frango Assado</h3>
                         <p class="product-description">Frango inteiro temperado com ervas especiais, assado no forno à lenha</p>
                         <div class="product-price">R$ 25,00</div>
-                        <button class="add-to-cart" onclick="addToCart('Frango Assado', 25.00)">
+                        <button class="add-to-cart" data-name="Frango Assado" data-price="25.00">
                             <i class="fas fa-plus"></i>
                             Adicionar ao Carrinho
                         </button>
@@ -772,13 +886,14 @@
                 </div>
 
                 <div class="product-card">
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1529042410759-befb1204b468?w=400&h=300&fit=crop')">
+                    <div class="product-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1661443631107-b049073b3d15?w=400&h=300&fit=crop&crop=center')">
+                        🌭
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Linguiça Artesanal</h3>
                         <p class="product-description">Linguiça artesanal defumada, feita com carne suína selecionada</p>
                         <div class="product-price">R$ 18,00</div>
-                        <button class="add-to-cart" onclick="addToCart('Linguiça Artesanal', 18.00)">
+                        <button class="add-to-cart" data-name="Linguiça Artesanal" data-price="18.00">
                             <i class="fas fa-plus"></i>
                             Adicionar ao Carrinho
                         </button>
@@ -792,13 +907,14 @@
             <div class="menu-grid">
                 <div class="product-card">
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=300&fit=crop')">
+                        🍔
                         <div class="product-badge">👑 Premium</div>
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Irmãos Burger</h3>
                         <p class="product-description">Blend de carnes nobres, queijo cheddar, bacon, alface, tomate e molho especial</p>
                         <div class="product-price">R$ 32,00</div>
-                        <button class="add-to-cart" onclick="addToCart('Irmãos Burger', 32.00)">
+                        <button class="add-to-cart" data-name="Irmãos Burger" data-price="32.00">
                             <i class="fas fa-plus"></i>
                             Adicionar ao Carrinho
                         </button>
@@ -807,12 +923,13 @@
 
                 <div class="product-card">
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&h=300&fit=crop')">
+                        🍔
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">X-Bacon Supreme</h3>
                         <p class="product-description">Hamburger bovino, bacon crocante, queijo, ovo e batata palha</p>
                         <div class="product-price">R$ 28,00</div>
-                        <button class="add-to-cart" onclick="addToCart('X-Bacon Supreme', 28.00)">
+                        <button class="add-to-cart" data-name="X-Bacon Supreme" data-price="28.00">
                             <i class="fas fa-plus"></i>
                             Adicionar ao Carrinho
                         </button>
@@ -821,12 +938,13 @@
 
                 <div class="product-card">
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&h=300&fit=crop')">
+                        🥗
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Veggie Deluxe</h3>
                         <p class="product-description">Hambúrguer vegetal, queijo vegano, alface, tomate e molho verde</p>
                         <div class="product-price">R$ 24,00</div>
-                        <button class="add-to-cart" onclick="addToCart('Veggie Deluxe', 24.00)">
+                        <button class="add-to-cart" data-name="Veggie Deluxe" data-price="24.00">
                             <i class="fas fa-plus"></i>
                             Adicionar ao Carrinho
                         </button>
@@ -840,13 +958,14 @@
             <div class="menu-grid">
                 <div class="product-card">
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&h=300&fit=crop')">
+                        🍕
                         <div class="product-badge">🍕 Tradicional</div>
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Pizza Margherita</h3>
                         <p class="product-description">Molho de tomate, mussarela de búfala, manjericão fresco e azeite extra virgem</p>
                         <div class="product-price">R$ 35,00</div>
-                        <button class="add-to-cart" onclick="addToCart('Pizza Margherita', 35.00)">
+                        <button class="add-to-cart" data-name="Pizza Margherita" data-price="35.00">
                             <i class="fas fa-plus"></i>
                             Adicionar ao Carrinho
                         </button>
@@ -855,13 +974,14 @@
 
                 <div class="product-card">
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1574071318508-1cdb81d86b8e?w=400&h=300&fit=crop')">
+                        🍕
                         <div class="product-badge">🥓 Especial</div>
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Pizza Calabresa</h3>
                         <p class="product-description">Calabresa premium, cebola roxa, azeitonas pretas e queijo mussarela</p>
                         <div class="product-price">R$ 32,00</div>
-                        <button class="add-to-cart" onclick="addToCart('Pizza Calabresa', 32.00)">
+                        <button class="add-to-cart" data-name="Pizza Calabresa" data-price="32.00">
                             <i class="fas fa-plus"></i>
                             Adicionar ao Carrinho
                         </button>
@@ -870,12 +990,13 @@
 
                 <div class="product-card">
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1595708684082-a173bb3a06c5?w=400&h=300&fit=crop')">
+                        🍕
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Pizza Portuguesa</h3>
                         <p class="product-description">Presunto, ovos, ervilha, cebola, azeitona e mussarela</p>
                         <div class="product-price">R$ 38,00</div>
-                        <button class="add-to-cart" onclick="addToCart('Pizza Portuguesa', 38.00)">
+                        <button class="add-to-cart" data-name="Pizza Portuguesa" data-price="38.00">
                             <i class="fas fa-plus"></i>
                             Adicionar ao Carrinho
                         </button>
@@ -889,13 +1010,14 @@
             <div class="menu-grid">
                 <div class="product-card">
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400&h=300&fit=crop')">
+                        🍺
                         <div class="product-badge">❄️ Gelada</div>
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Cerveja Long Neck</h3>
                         <p class="product-description">Cerveja gelada premium, perfeita para acompanhar o churrasco</p>
                         <div class="product-price">R$ 8,00</div>
-                        <button class="add-to-cart" onclick="addToCart('Cerveja Long Neck', 8.00)">
+                        <button class="add-to-cart" data-name="Cerveja Long Neck" data-price="8.00">
                             <i class="fas fa-plus"></i>
                             Adicionar ao Carrinho
                         </button>
@@ -904,12 +1026,13 @@
 
                 <div class="product-card">
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=300&fit=crop')">
+                        🥤
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Suco Natural</h3>
                         <p class="product-description">Suco natural de frutas selecionadas: laranja, limão, maracujá ou acerola</p>
                         <div class="product-price">R$ 12,00</div>
-                        <button class="add-to-cart" onclick="addToCart('Suco Natural', 12.00)">
+                        <button class="add-to-cart" data-name="Suco Natural" data-price="12.00">
                             <i class="fas fa-plus"></i>
                             Adicionar ao Carrinho
                         </button>
@@ -918,12 +1041,13 @@
 
                 <div class="product-card">
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1610889556528-9a770e32642f?w=400&h=300&fit=crop')">
+                        🥤
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Refrigerante 2L</h3>
                         <p class="product-description">Coca-Cola, Guaraná, Sprite ou Fanta - garrafa 2 litros</p>
                         <div class="product-price">R$ 10,00</div>
-                        <button class="add-to-cart" onclick="addToCart('Refrigerante 2L', 10.00)">
+                        <button class="add-to-cart" data-name="Refrigerante 2L" data-price="10.00">
                             <i class="fas fa-plus"></i>
                             Adicionar ao Carrinho
                         </button>
@@ -932,12 +1056,13 @@
 
                 <div class="product-card">
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop')">
+                        💧
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Água Mineral</h3>
                         <p class="product-description">Água mineral sem gás, garrafa 500ml gelada</p>
                         <div class="product-price">R$ 4,00</div>
-                        <button class="add-to-cart" onclick="addToCart('Água Mineral', 4.00)">
+                        <button class="add-to-cart" data-name="Água Mineral" data-price="4.00">
                             <i class="fas fa-plus"></i>
                             Adicionar ao Carrinho
                         </button>
@@ -951,13 +1076,14 @@
             <div class="menu-grid">
                 <div class="product-card">
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&h=300&fit=crop')">
+                        🍮
                         <div class="product-badge">🍰 Artesanal</div>
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Pudim de Leite</h3>
                         <p class="product-description">Pudim cremoso feito com leite condensado e calda de caramelo</p>
                         <div class="product-price">R$ 15,00</div>
-                        <button class="add-to-cart" onclick="addToCart('Pudim de Leite', 15.00)">
+                        <button class="add-to-cart" data-name="Pudim de Leite" data-price="15.00">
                             <i class="fas fa-plus"></i>
                             Adicionar ao Carrinho
                         </button>
@@ -966,12 +1092,13 @@
 
                 <div class="product-card">
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=400&h=300&fit=crop')">
+                        🍫
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Brownie de Chocolate</h3>
                         <p class="product-description">Brownie artesanal com chocolate belga e nozes, acompanha sorvete</p>
                         <div class="product-price">R$ 18,00</div>
-                        <button class="add-to-cart" onclick="addToCart('Brownie de Chocolate', 18.00)">
+                        <button class="add-to-cart" data-name="Brownie de Chocolate" data-price="18.00">
                             <i class="fas fa-plus"></i>
                             Adicionar ao Carrinho
                         </button>
@@ -980,12 +1107,13 @@
 
                 <div class="product-card">
                     <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&h=300&fit=crop')">
+                        🍦
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Sorvete Artesanal</h3>
                         <p class="product-description">Sorvete cremoso sabores: chocolate, morango, baunilha ou coco</p>
                         <div class="product-price">R$ 12,00</div>
-                        <button class="add-to-cart" onclick="addToCart('Sorvete Artesanal', 12.00)">
+                        <button class="add-to-cart" data-name="Sorvete Artesanal" data-price="12.00">
                             <i class="fas fa-plus"></i>
                             Adicionar ao Carrinho
                         </button>
@@ -1001,7 +1129,7 @@
         <span class="cart-count" id="cartCount">0</span>
     </button>
 
-    <!-- AI Assistant Button -->
+    <!-- AI Assistant -->
     <div class="ai-assistant">
         <button class="ai-button" onclick="toggleAI()">
             <i class="fas fa-robot"></i>
@@ -1026,7 +1154,7 @@
                 </div>
             </div>
             <div class="ai-input-container">
-                <input type="text" class="ai-input" id="aiInput" placeholder="Digite sua pergunta..." onkeypress="if(event.key==='Enter') sendAIMessage()">
+                <input type="text" class="ai-input" id="aiInput" placeholder="Digite sua pergunta...">
             </div>
         </div>
     </div>
@@ -1039,24 +1167,27 @@
                 <button class="close" onclick="closeCart()">&times;</button>
             </div>
             
-            <div id="cartItems"></div>
+            <div id="cartItems">
+                <div class="empty-cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>Carrinho vazio</h3>
+                    <p>Adicione itens ao seu carrinho para continuar</p>
+                </div>
+            </div>
             
             <div class="location-section">
                 <h3><i class="fas fa-map-marker-alt"></i> Confirmação de Endereço</h3>
-                <div id="currentLocation">📍 Detectando localização...</div>
+                <div id="currentLocation">📍 Clique em "Confirmar Localização" para detectar</div>
                 <button class="confirm-location" onclick="confirmLocation()">
                     <i class="fas fa-check"></i>
                     Confirmar Localização
                 </button>
-                <div id="locationConfirmed" style="display: none; color: #28a745; margin-top: 10px;">
-                    ✅ Localização confirmada!
-                </div>
             </div>
 
             <div class="payment-methods">
                 <h3><i class="fas fa-credit-card"></i> Forma de Pagamento</h3>
                 
-                <div class="payment-method" onclick="selectPayment('pix')">
+                <div class="payment-method" data-payment="pix">
                     <input type="radio" name="payment" value="pix" id="pixPayment">
                     <i class="payment-icon fab fa-pix"></i>
                     <div>
@@ -1065,7 +1196,7 @@
                     </div>
                 </div>
 
-                <div class="payment-method" onclick="selectPayment('money')">
+                <div class="payment-method" data-payment="money">
                     <input type="radio" name="payment" value="money" id="moneyPayment">
                     <i class="payment-icon fas fa-money-bill-wave"></i>
                     <div>
@@ -1075,7 +1206,7 @@
                 </div>
 
                 <!-- PIX Container -->
-                <div id="pixContainer" class="pix-container" style="display: none;">
+                <div id="pixContainer" class="pix-container">
                     <h3>💳 Pagamento PIX</h3>
                     <div class="pix-info">
                         <p><strong>Total do Pedido:</strong> R$ <span id="pixTotal">0,00</span></p>
@@ -1083,7 +1214,7 @@
                     </div>
                     <div class="pix-key">
                         <strong>Chave PIX:</strong><br>
-                        11987654321
+                        98988833657
                     </div>
                     <button class="copy-pix" onclick="copyPix()">
                         <i class="fas fa-copy"></i> Copiar Chave PIX
@@ -1094,12 +1225,12 @@
                 </div>
 
                 <!-- Money Container -->
-                <div id="moneyContainer" class="money-container" style="display: none;">
+                <div id="moneyContainer" class="money-container">
                     <h3>💰 Pagamento em Dinheiro</h3>
                     <p><strong>Total do Pedido:</strong> R$ <span id="moneyTotal">0,00</span></p>
                     
                     <label for="moneyAmount"><strong>Quanto você tem em dinheiro?</strong></label>
-                    <input type="number" class="money-input" id="moneyAmount" placeholder="Digite o valor..." step="0.01" oninput="calculateChange()">
+                    <input type="number" class="money-input" id="moneyAmount" placeholder="Digite o valor..." step="0.01">
                     
                     <div class="money-buttons">
                         <button class="money-btn" onclick="setMoneyAmount(30)">R$ 30</button>
@@ -1107,16 +1238,16 @@
                         <button class="money-btn" onclick="setMoneyAmount(100)">R$ 100</button>
                     </div>
                     
-                    <div id="changeInfo" class="change-info" style="display: none;"></div>
+                    <div id="changeInfo" class="change-info"></div>
                 </div>
             </div>
 
-            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                    <strong style="font-size: 1.2rem;">Total: R$ <span id="totalPrice">0,00</span></strong>
+            <div class="order-summary">
+                <div class="total-row">
+                    <strong>Total: R$ <span id="totalPrice">0,00</span></strong>
                 </div>
                 
-                <button id="finalizeOrder" class="add-to-cart" onclick="finalizeOrder()" style="opacity: 0.5; cursor: not-allowed;" disabled>
+                <button id="finalizeOrder" class="finalize-btn" onclick="finalizeOrder()" disabled>
                     <i class="fas fa-whatsapp"></i>
                     Finalizar Pedido
                 </button>
@@ -1128,6 +1259,7 @@
     <div id="notification" class="notification"></div>
 
     <script>
+        // Global variables
         let cart = [];
         let currentLocation = null;
         let locationConfirmed = false;
@@ -1148,8 +1280,86 @@
             'ingredientes': 'Usamos apenas ingredientes frescos e carnes selecionadas! Qual prato quer saber?'
         };
 
-        // Initialize location detection
-        function initLocation() {
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            setupEventListeners();
+            loadImages();
+            detectLocation();
+        });
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Navigation tabs
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    showCategory(category);
+                });
+            });
+
+            // Add to cart buttons
+            document.querySelectorAll('.add-to-cart').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const name = this.getAttribute('data-name');
+                    const price = parseFloat(this.getAttribute('data-price'));
+                    addToCart(name, price);
+                });
+            });
+
+            // Payment methods
+            document.querySelectorAll('.payment-method').forEach(method => {
+                method.addEventListener('click', function() {
+                    const payment = this.getAttribute('data-payment');
+                    selectPayment(payment);
+                });
+            });
+
+            // Money input
+            const moneyInput = document.getElementById('moneyAmount');
+            if (moneyInput) {
+                moneyInput.addEventListener('input', calculateChange);
+            }
+
+            // AI input
+            const aiInput = document.getElementById('aiInput');
+            if (aiInput) {
+                aiInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendAIMessage();
+                    }
+                });
+            }
+
+            // Close modal on outside click
+            document.getElementById('cartModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeCart();
+                }
+            });
+        }
+
+        // Load images and hide emoji when loaded
+        function loadImages() {
+            document.querySelectorAll('.product-image').forEach(img => {
+                const bgImage = img.style.backgroundImage;
+                if (bgImage) {
+                    const url = bgImage.slice(5, -2);
+                    const testImg = new Image();
+                    testImg.onload = function() {
+                        img.classList.add('loaded');
+                    };
+                    testImg.src = url;
+                }
+            });
+        }
+
+        // Detect location
+        function detectLocation() {
+            const locationText = document.getElementById('locationText');
+            const currentLocationEl = document.getElementById('currentLocation');
+            
+            locationText.innerHTML = '📍 Detectando localização...';
+            
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
                     function(position) {
@@ -1158,16 +1368,18 @@
                             lng: position.coords.longitude
                         };
                         
-                        // Reverse geocoding simulation
-                        const mockAddress = "Rua das Palmeiras, 123 - Centro";
-                        document.getElementById('locationText').innerHTML = `📍 ${mockAddress}`;
-                        document.getElementById('currentLocation').innerHTML = `📍 <strong>Endereço Detectado:</strong><br>${mockAddress}`;
+                        const mockAddress = "Rua das Palmeiras, 123 - Centro, São Luís - MA";
+                        locationText.innerHTML = `📍 ${mockAddress}`;
+                        currentLocationEl.innerHTML = `📍 <strong>Endereço Detectado:</strong><br>${mockAddress}`;
                     },
                     function(error) {
-                        document.getElementById('locationText').innerHTML = '📍 Localização não disponível';
-                        document.getElementById('currentLocation').innerHTML = '📍 <strong>Localização:</strong><br>Digite seu endereço manualmente';
+                        locationText.innerHTML = '📍 Clique para detectar localização';
+                        currentLocationEl.innerHTML = '📍 <strong>Localização:</strong><br>Clique em "Confirmar Localização" para detectar';
                     }
                 );
+            } else {
+                locationText.innerHTML = '📍 Localização não disponível';
+                currentLocationEl.innerHTML = '📍 <strong>Localização:</strong><br>Digite seu endereço manualmente';
             }
         }
 
@@ -1179,13 +1391,17 @@
             });
             
             // Show selected section
-            document.getElementById(category).classList.add('active');
+            const targetSection = document.getElementById(category);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
             
             // Update nav tabs
             document.querySelectorAll('.nav-tab').forEach(tab => {
                 tab.classList.remove('active');
             });
-            event.target.classList.add('active');
+            
+            document.querySelector(`[data-category="${category}"]`).classList.add('active');
         }
 
         // Add to cart
@@ -1204,28 +1420,48 @@
             
             updateCartUI();
             showNotification(`${name} adicionado ao carrinho!`);
+            
+            // Add vibration feedback if supported
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
         }
 
         // Update cart UI
         function updateCartUI() {
-            document.getElementById('cartCount').textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
             total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             
-            const cartItemsHTML = cart.map(item => `
-                <div class="cart-item">
-                    <div class="cart-item-info">
-                        <h4>${item.name}</h4>
-                        <div class="cart-item-price">R$ ${(item.price * item.quantity).toFixed(2)}</div>
-                    </div>
-                    <div class="quantity-controls">
-                        <button class="qty-btn" onclick="changeQuantity('${item.name}', -1)">-</button>
-                        <span>${item.quantity}</span>
-                        <button class="qty-btn" onclick="changeQuantity('${item.name}', 1)">+</button>
-                    </div>
-                </div>
-            `).join('');
+            document.getElementById('cartCount').textContent = cartCount;
             
-            document.getElementById('cartItems').innerHTML = cartItemsHTML;
+            const cartItemsEl = document.getElementById('cartItems');
+            
+            if (cart.length === 0) {
+                cartItemsEl.innerHTML = `
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3>Carrinho vazio</h3>
+                        <p>Adicione itens ao seu carrinho para continuar</p>
+                    </div>
+                `;
+            } else {
+                const cartItemsHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <div class="cart-item-price">R$ ${(item.price * item.quantity).toFixed(2)}</div>
+                        </div>
+                        <div class="quantity-controls">
+                            <button class="qty-btn" onclick="changeQuantity('${item.name}', -1)">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="qty-btn" onclick="changeQuantity('${item.name}', 1)">+</button>
+                        </div>
+                    </div>
+                `).join('');
+                
+                cartItemsEl.innerHTML = cartItemsHTML;
+            }
+            
             document.getElementById('totalPrice').textContent = total.toFixed(2);
             document.getElementById('pixTotal').textContent = total.toFixed(2);
             document.getElementById('moneyTotal').textContent = total.toFixed(2);
@@ -1247,19 +1483,24 @@
 
         // Open cart
         function openCart() {
-            document.getElementById('cartModal').style.display = 'flex';
+            document.getElementById('cartModal').classList.add('show');
             updateCartUI();
         }
 
         // Close cart
         function closeCart() {
-            document.getElementById('cartModal').style.display = 'none';
+            document.getElementById('cartModal').classList.remove('show');
         }
 
         // Confirm location
         function confirmLocation() {
+            detectLocation();
             locationConfirmed = true;
-            document.getElementById('locationConfirmed').style.display = 'block';
+            
+            const confirmBtn = document.querySelector('.confirm-location');
+            confirmBtn.innerHTML = '<i class="fas fa-check"></i> Localização Confirmada';
+            confirmBtn.classList.add('confirmed');
+            
             checkOrderReady();
         }
 
@@ -1276,11 +1517,12 @@
             document.querySelectorAll('.payment-method').forEach(pm => {
                 pm.classList.remove('selected');
             });
-            event.currentTarget.classList.add('selected');
+            
+            document.querySelector(`[data-payment="${method}"]`).classList.add('selected');
             
             // Show/hide payment containers
-            document.getElementById('pixContainer').style.display = method === 'pix' ? 'block' : 'none';
-            document.getElementById('moneyContainer').style.display = method === 'money' ? 'block' : 'none';
+            document.getElementById('pixContainer').classList.toggle('show', method === 'pix');
+            document.getElementById('moneyContainer').classList.toggle('show', method === 'money');
             
             checkOrderReady();
         }
@@ -1291,11 +1533,11 @@
             const changeInfo = document.getElementById('changeInfo');
             
             if (moneyAmount === 0) {
-                changeInfo.style.display = 'none';
+                changeInfo.classList.remove('show');
                 return;
             }
             
-            changeInfo.style.display = 'block';
+            changeInfo.classList.add('show');
             
             if (moneyAmount < total) {
                 const missing = total - moneyAmount;
@@ -1308,177 +1550,4 @@
                 changeInfo.style.borderColor = '#28a745';
             } else {
                 const change = moneyAmount - total;
-                changeInfo.innerHTML = `💰 <strong>Troco: R$ ${change.toFixed(2)}</strong>`;
-                changeInfo.style.background = 'rgba(255, 193, 7, 0.2)';
-                changeInfo.style.borderColor = '#ffc107';
-            }
-            
-            checkOrderReady();
-        }
-
-        // Set money amount
-        function setMoneyAmount(amount) {
-            document.getElementById('moneyAmount').value = amount;
-            calculateChange();
-        }
-
-        // Copy PIX key
-        function copyPix() {
-            navigator.clipboard.writeText('11987654321').then(() => {
-                showNotification('Chave PIX copiada!');
-            });
-        }
-
-        // Check if order is ready
-        function checkOrderReady() {
-            const button = document.getElementById('finalizeOrder');
-            const moneyAmount = parseFloat(document.getElementById('moneyAmount').value) || 0;
-            
-            let isReady = cart.length > 0 && locationConfirmed && paymentMethod;
-            
-            if (paymentMethod === 'money') {
-                isReady = isReady && moneyAmount >= total;
-            }
-            
-            if (isReady) {
-                button.disabled = false;
-                button.style.opacity = '1';
-                button.style.cursor = 'pointer';
-            } else {
-                button.disabled = true;
-                button.style.opacity = '0.5';
-                button.style.cursor = 'not-allowed';
-            }
-        }
-
-        // Finalize order
-        function finalizeOrder() {
-            if (cart.length === 0) return;
-            
-            let orderText = `🍔 *NOVO PEDIDO - CHURRASCO DOS IRMÃOS*\n\n`;
-            orderText += `📋 *ITENS:*\n`;
-            
-            cart.forEach(item => {
-                orderText += `• ${item.quantity}x ${item.name} - R$ ${(item.price * item.quantity).toFixed(2)}\n`;
-            });
-            
-            orderText += `\n💰 *TOTAL: R$ ${total.toFixed(2)}*\n\n`;
-            
-            orderText += `💳 *PAGAMENTO:* ${paymentMethod === 'pix' ? 'PIX' : 'Dinheiro'}\n`;
-            
-            if (paymentMethod === 'money') {
-                const moneyAmount = parseFloat(document.getElementById('moneyAmount').value);
-                const change = moneyAmount - total;
-                orderText += `💵 *Valor do Cliente:* R$ ${moneyAmount.toFixed(2)}\n`;
-                if (change > 0) {
-                    orderText += `🔄 *Troco:* R$ ${change.toFixed(2)}\n`;
-                }
-            }
-            
-            orderText += `\n📍 *LOCALIZAÇÃO:*\n`;
-            orderText += document.getElementById('currentLocation').textContent.replace('Endereço Detectado:', '').trim();
-            
-            orderText += `\n\n⏰ *Horário do Pedido:* ${new Date().toLocaleString('pt-BR')}`;
-            
-            const whatsappURL = `https://wa.me/5598988833657?text=${encodeURIComponent(orderText)}`;
-            window.open(whatsappURL, '_blank');
-            
-            showNotification('Pedido enviado! Aguarde a confirmação.');
-            
-            // Reset cart
-            cart = [];
-            updateCartUI();
-            closeCart();
-        }
-
-        // AI Functions
-        function toggleAI() {
-            const aiChat = document.getElementById('aiChat');
-            aiChat.style.display = aiChat.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function sendAIMessage() {
-            const input = document.getElementById('aiInput');
-            const message = input.value.trim().toLowerCase();
-            
-            if (!message) return;
-            
-            // Add user message
-            addAIMessage(input.value, 'user');
-            
-            // Generate AI response
-            setTimeout(() => {
-                const response = generateAIResponse(message);
-                addAIMessage(response, 'bot');
-            }, 500);
-            
-            input.value = '';
-        }
-
-        function addAIMessage(message, type) {
-            const messagesContainer = document.getElementById('aiMessages');
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `ai-message ${type}`;
-            messageDiv.innerHTML = message;
-            messagesContainer.appendChild(messageDiv);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
-
-        function generateAIResponse(message) {
-            // Check for exact matches first
-            for (const [key, response] of Object.entries(aiResponses)) {
-                if (message.includes(key)) {
-                    return response;
-                }
-            }
-            
-            // Generate contextual responses
-            if (message.includes('hamburger') || message.includes('burger')) {
-                return 'Nossos hamburgers são artesanais! 🍔 Recomendo o Irmãos Burger (R$ 32) - é nosso premium com blend especial!';
-            }
-            
-            if (message.includes('pizza')) {
-                return 'Nossas pizzas são feitas no forno! 🍕 A Margherita (R$ 35) é tradicional e a Calabresa (R$ 32) é a favorita!';
-            }
-            
-            if (message.includes('bebida') || message.includes('cerveja')) {
-                return 'Temos cerveja gelada (R$ 8), sucos naturais (R$ 12) e refrigerantes (R$ 10)! 🍺 O que prefere?';
-            }
-            
-            if (message.includes('sobremesa') || message.includes('doce')) {
-                return 'Para finalizar: Pudim de Leite (R$ 15), Brownie (R$ 18) ou Sorvete Artesanal (R$ 12)! 🍰';
-            }
-            
-            if (message.includes('desconto') || message.includes('promoção')) {
-                return 'Temos o Combo Família especial! Vou calcular o melhor preço para você 💰';
-            }
-            
-            if (message.includes('ajuda') || message.includes('duvida')) {
-                return 'Estou aqui para ajudar! 😊 Posso recomendar pratos, explicar ingredientes ou calcular combos. O que precisa?';
-            }
-            
-            // Default responses
-            const defaultResponses = [
-                'Interessante! 🤔 Me conte mais sobre o que você gostaria de saber.',
-                'Que tal experimentar nossa Picanha Premium? É o prato mais pedido! 🥩',
-                'Posso te ajudar a montar um combo perfeito! Qual tipo de comida prefere?',
-                'Não entendi bem, mas estou aqui para ajudar! Quer ver nossas especialidades? 🍽️'
-            ];
-            
-            return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
-        }
-
-        // Show notification
-        function showNotification(message) {
-            const notification = document.getElementById('notification');
-            notification.textContent = message;
-            notification.classList.add('show');
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
-        }
-
-        // Initialize app
-        document.addEventListener('DOMContentLoaded', function() {
-            initLocation();
+                changeInfo.innerHTML = `💰 <strong>Troco: R$ ${change.toFixed(2)}</strong
